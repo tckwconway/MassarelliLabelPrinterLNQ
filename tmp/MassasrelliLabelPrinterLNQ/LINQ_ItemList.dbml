@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DATA" Class="LINQ_ItemListDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TCHPSERVER;Initial Catalog=DATA;Persist Security Info=True;User ID=sa" SettingsObjectName="MassasrelliLabelPrinterLNQ.My.MySettings" SettingsPropertyName="MassDATA_TCHPServerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.vimItemList" Member="vimItemLists">
+    <Type Name="vimItemList">
+      <Column Name="item_no" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="item_desc_1" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+      <Column Name="prod_cat" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

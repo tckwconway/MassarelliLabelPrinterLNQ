@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="LINQ_ItemList">
+  <DataContextMoniker Name="/LINQ_ItemListDataContext" />
+  <nestedChildShapes>
+    <classShape Id="17c7e225-7cd2-45c2-b076-7c670ffcc449" absoluteBounds="4.125, 2.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/LINQ_ItemListDataContext/vimItemList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8f5639d8-f942-4a49-94d9-b7452593104c" absoluteBounds="4.14, 2.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

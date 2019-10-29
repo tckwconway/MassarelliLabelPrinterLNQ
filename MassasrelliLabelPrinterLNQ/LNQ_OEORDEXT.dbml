@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DATA" Class="LNQ_OEORDEXTDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TCHPSERVER;Initial Catalog=DATA;Persist Security Info=True;User ID=sa" SettingsObjectName="MassasrelliLabelPrinterLNQ.My.MySettings" SettingsPropertyName="MassDATA_TCHPServerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.OEORDEXT_MAS" Member="OEORDEXT_MAs">
+    <Type Name="OEORDEXT_MA">
+      <Column Name="ord_no" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+      <Column Name="printed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="uid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DATA" Class="LNQ_OrderItemsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TCHPSERVER;Initial Catalog=DATA;Persist Security Info=True;User ID=sa" SettingsObjectName="MassasrelliLabelPrinterLNQ.My.MySettings" SettingsPropertyName="MassDATA_TCHPServerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.voeOrderItem" Member="voeOrderItems">
+    <Type Name="voeOrderItem">
+      <Column Name="ord_no" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="qty_ordered" Type="System.Decimal" DbType="Decimal(13,4) NOT NULL" CanBeNull="false" />
+      <Column Name="item_no" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="pick_seq" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="item_desc_1" Type="System.String" DbType="Char(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cmt" Type="System.String" DbType="Char(40) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

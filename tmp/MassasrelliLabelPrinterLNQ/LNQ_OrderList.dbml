@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DATA" Class="LNQ_OrderListDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MASS_SQL2;Initial Catalog=DATA;Persist Security Info=True;User ID=sa" SettingsObjectName="MassasrelliLabelPrinterLNQ.My.MySettings" SettingsPropertyName="DATAConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.voeGetOEOrdHdrList" Member="voeGetOEOrdHdrLists">
+    <Type Name="voeGetOEOrdHdrList">
+      <Column Name="printed" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="ord_no" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="ord_dt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cus_no" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="cus_alt_adr_cd" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="bill_to_name" Type="System.String" DbType="Char(40)" CanBeNull="true" />
+      <Column Name="ship_to_name" Type="System.String" DbType="Char(40)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(22) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

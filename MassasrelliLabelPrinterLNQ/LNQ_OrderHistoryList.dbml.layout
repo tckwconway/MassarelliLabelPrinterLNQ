@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="LNQ_OrderHistoryList">
+  <DataContextMoniker Name="/LNQ_OrderHistoryListDataContext" />
+  <nestedChildShapes>
+    <classShape Id="2f5733ac-c819-4dc2-a1ac-b46ab6173131" absoluteBounds="1.75, 3.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/LNQ_OrderHistoryListDataContext/voeGetOEHdrHstList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="894fce57-7e02-4910-921c-695e4590024d" absoluteBounds="1.7650000000000001, 3.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

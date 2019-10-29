@@ -1,0 +1,60 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="MassDATA_TCHPServerConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=TCHPSERVER;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=230South5th&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=TCHPSERVER;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=230South5th</Value>
+    </Setting>
+    <Setting Name="MassDATAx64Connection" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=192.168.5.17;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=STMARTIN&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=192.168.5.17;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=STMARTIN</Value>
+    </Setting>
+    <Setting Name="MassDATA_TC_2008R2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=TCHPSERVER\SQL2008R2;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=230South5th&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=TCHPSERVER\SQL2008R2;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=230South5th</Value>
+    </Setting>
+    <Setting Name="MassDATA_TCOPTIPLEX" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=TC-OPTIPLEX\SQL2008R2;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=230South5th&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=TC-OPTIPLEX\SQL2008R2;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=230South5th</Value>
+    </Setting>
+    <Setting Name="MassDATAConnection" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=MASS_SQL2;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=STMARTIN&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=MASS_SQL2;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=STMARTIN</Value>
+    </Setting>
+    <Setting Name="DATAConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=TCHPSERVER;Initial Catalog=DATA;Persist Security Info=True;User ID=SA;Password=230South5th&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=TCHPSERVER;Initial Catalog=DATA;Persist Security Info=True;User ID=SA;Password=230South5th</Value>
+    </Setting>
+    <Setting Name="DATAConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=MASS_SQL2;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=STMARTIN&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=MASS_SQL2;Initial Catalog=DATA;Persist Security Info=True;User ID=sa;Password=STMARTIN</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
