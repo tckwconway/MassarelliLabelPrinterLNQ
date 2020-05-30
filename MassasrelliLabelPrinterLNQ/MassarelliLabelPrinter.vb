@@ -141,7 +141,7 @@ Public Class MassarelliLabelPrinter
         Dim cls As Integer = dt.Columns.Count - 1
 
         Dim rw As DataRow
-        Dim i As Integer = 0
+        Dim i As Integer = 1
         Dim j As Integer = 0
         Dim qty As Integer = 0
 
@@ -156,23 +156,44 @@ Public Class MassarelliLabelPrinter
                 Return False
             End If
 
+            'ADD ONE ROW FOR A HEADER
+            rws += 1
+
+
+
             Dim arrItems(rws, cls - 1) As String
+
+            'Add the header row
+            arrItems(0, 0) = "SKU"
+            arrItems(0, 1) = "Description"
+            arrItems(0, 2) = "Retail"
+            arrItems(0, 3) = "MfgItemNo"
+            arrItems(0, 4) = "MfgFinishNo"
+            arrItems(0, 5) = "QtyOrd"
+            arrItems(0, 6) = "UPC"
+
             Try
-                'arrItems(0, 0) = ""
-                'arrItems(0, 1) = ""
-                'arrItems(0, 2) = ""
-                'arrItems(0, 3) = ""
-                'arrItems(0, 4) = ""
-                'arrItems(0, 5) = ""
-                'If ExcelDataSet.ImportType = "UPC" Then
-                '    arrItems(0, 6) = ""
-                'End If
+
                 For Each rw In dt.Rows
 
                     qty = rw("QtyOrd")
 
-                    For j = 0 To qty - 1
-                        arrItems(i, 0) = rw("SKU").ToString.Trim
+                    For j = 0 To qty
+
+                        'arrItems(i, 0) = "12345"
+                        'arrItems(i, 1) = "LIL DRAGON - CELEBRATE"
+                        'arrItems(i, 2) = "39.99"
+                        'arrItems(i, 3) = "5117"
+                        'arrItems(i, 4) = "DSBLU"
+                        'arrItems(i, 5) = "1.0000"
+                        'arrItems(i, 6) = "723239511726"
+
+
+
+
+
+
+                        arrItems(i, 0) = "12345" 'rw("SKU").ToString.Trim
                         arrItems(i, 1) = rw("Description").ToString.Trim
                         arrItems(i, 2) = rw("Retail").ToString.Trim
                         arrItems(i, 3) = rw("MfgPart").ToString.Trim
@@ -1026,7 +1047,11 @@ Public Class MassarelliLabelPrinter
             Dim itm As String = r("item_no").ToString.Trim
             Dim ds As String = IIf(r("pick_seq").ToString.Trim.Length > 2, r("pick_seq").ToString.Trim.Substring(0, 2), r("pick_seq").ToString.Trim)
             For Each rw As DataRow In dtxlDS.Rows
-                If itm = rw("MfgItemNo").ToString.Trim And ds = rw("MfgFinishNo") Then
+                'If rw("MfgItemNo").ToString.Trim = "5117" Then
+                '    MsgBox("STOP")
+                'End If
+
+                If itm = rw("MfgItemNo").ToString.Trim And rw("MfgFinishNo").ToString.IndexOf("DS") > -1 Then
                     missingitem = False
                     Exit For
                 End If
@@ -1170,8 +1195,8 @@ Public Class MassarelliLabelPrinter
 #End Region
 
 #Region "  Controls   "
-
     Private Sub FilterOrderTextBoxes(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles txtBillToName.KeyUp, txtOrderNo.KeyUp, txtStatus.KeyUp, txtShipToName.KeyUp, txtOrderDate.KeyUp, txtCustNo.KeyUp, txtCustAltAdrCode.KeyUp
+        ' Exit Sub
         Dim txt As TextBox = DirectCast(sender, TextBox)
         Dim PendOrHist As Integer = IIf(rdHistory.Checked, PendingOrHistory.history, PendingOrHistory.pending)
         FilterOrderList_LNQ_ByBillTo(txt.Text, txt, PendOrHist)
@@ -1826,24 +1851,28 @@ Public Class MassarelliLabelPrinter
     End Sub
 
     Private Sub cboPrinters_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cboPrinters.SelectedIndexChanged
+        'On Error Resume Next
+
         Dim cbo As ComboBox = DirectCast(sender, ComboBox)
         ExcelDataSet.PrinterName = cbo.SelectedItem
-        Try
+        If format IsNot Nothing Then
+            'Try
             format.PrintSetup.PrinterName = ExcelDataSet.PrinterName
-            'Select Case ItemsOrOrders
-            '    Case "Orders"
-            '        If dgvOrderItemsSelected.RowCount > 0 Then
-            '            PreviewLabel(ItemsOrOrders)
-            '        End If
-            '    Case "Items"
+        End If
+        'Select Case ItemsOrOrders
+        '    Case "Orders"
+        '        If dgvOrderItemsSelected.RowCount > 0 Then
+        '            PreviewLabel(ItemsOrOrders)
+        '        End If
+        '    Case "Items"
 
 
-            'End Select
+        'End Select
 
 
-        Catch ex As Exception
+        'atch ex As Exception
 
-        End Try
+        'End Try
     End Sub
 
     Private Sub picExcel_Click(sender As System.Object, e As System.EventArgs) Handles picExcel.Click, lblPriceSheet.Click, lblLoadExcelPriceList.Click
@@ -1945,6 +1974,9 @@ Public Class MassarelliLabelPrinter
     End Sub
 
     Private Sub PreviewLabel(ItemsOrOrders As String)
+        Dim textfile As New TextFile("textFile")
+
+        'Txtfile.UseFieldNamesFromFirstRecord = False
 
         Select Case ItemsOrOrders
             Case "Orders"
@@ -2045,6 +2077,7 @@ Public Class MassarelliLabelPrinter
 
             ' Have the background worker export the BarTender format.
             Try
+                'backgroundWorker_DoWork(format)
                 backgroundWorker.RunWorkerAsync(format)
             Catch ex As Exception
 
@@ -2164,6 +2197,25 @@ Public Class MassarelliLabelPrinter
 #End Region
 
 #Region "   Background Worker   "
+
+    'Private Sub backgroundWorker_DoWork(fomat As LabelFormatDocument)
+    '    'Dim format As LabelFormatDocument = CType(e.Argument, LabelFormatDocument)
+
+    '    ' Delete any existing files.
+    '    Dim oldFiles() As String = Directory.GetFiles(previewPath, "*.*")
+    '    For index As Integer = 0 To oldFiles.Length - 1
+    '        File.Delete(oldFiles(index))
+    '    Next index
+
+    '    ' Export the format's print previews.
+    '    format.ExportPrintPreviewToFile(previewPath, "PrintPreview%PageNumber%.jpg", ImageType.JPEG, Seagull.BarTender.Print.ColorDepth.ColorDepth24bit, New Resolution(picPreview.Width, picPreview.Height), System.Drawing.Color.White, OverwriteOptions.Overwrite, True, True, messages)
+    '    Dim files() As String = Directory.GetFiles(previewPath, "*.*")
+    '    totalPages = 0
+    '    totalPages = files.Length
+    'End Sub
+
+
+
 
     Private Sub backgroundWorker_DoWork(ByVal sender As Object, ByVal e As DoWorkEventArgs) Handles backgroundWorker.DoWork
         Dim format As LabelFormatDocument = CType(e.Argument, LabelFormatDocument)
@@ -3075,7 +3127,5 @@ Public Class MassarelliLabelPrinter
         RemoveRow()
     End Sub
 
-    Private Sub txtOrderNo_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtOrderNo.TextChanged
 
-    End Sub
 End Class
