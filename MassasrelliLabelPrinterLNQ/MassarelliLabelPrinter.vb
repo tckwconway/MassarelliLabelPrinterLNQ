@@ -1962,7 +1962,7 @@ Public Class MassarelliLabelPrinter
 
     Private Sub PreviewLabel(ItemsOrOrders As String)
         Dim textfile As New TextFile("textFile")
-
+        Dim chk As Boolean = True
         'Txtfile.UseFieldNamesFromFirstRecord = False
 
         Select Case ItemsOrOrders
@@ -1980,12 +1980,26 @@ Public Class MassarelliLabelPrinter
 
                         For Each r As DataGridViewRow In dgv.Rows
                             If ExcelDataSet.ImportType = "SKU" Then
-                                ExcelDataSet.LabelDataTable.Rows.Add(New Object() {r.Cells(0).Value, r.Cells(1).Value, r.Cells(2).Value, r.Cells(3).Value, r.Cells(4).Value, _
+                                ExcelDataSet.LabelDataTable.Rows.Add(New Object() {r.Cells(0).Value, r.Cells(1).Value, r.Cells(2).Value, r.Cells(3).Value, r.Cells(4).Value,
                                                                                    r.Cells(5).Value, r.Cells(6).Value})
 
                             ElseIf ExcelDataSet.ImportType = "UPC" Then
-                                ExcelDataSet.LabelDataTable.Rows.Add(New Object() {r.Cells(0).Value, r.Cells(1).Value, r.Cells(2).Value, r.Cells(3).Value, r.Cells(4).Value, _
-                                                                                   r.Cells(5).Value, r.Cells(6).Value, r.Cells(7).Value})
+                                'ExcelDataSet.LabelDataTable.Rows.Add(New Object() {r.Cells(0).Value, r.Cells(1).Value, r.Cells(2).Value, r.Cells(3).Value, r.Cells(4).Value,
+                                '                                                   r.Cells(5).Value, r.Cells(6).Value, r.Cells(7).Value})
+
+                                'Dim ar As Object
+                                'ExcelDataSet.LabelDataTable.Rows.Add(New Object() {r.Cells(0).Value, r.Cells(1).Value, r.Cells(2).Value, r.Cells(3).Value, r.Cells(4).Value,
+                                '                                                   r.Cells(5).Value, r.Cells(6).Value}, r.Cells(7).Value)
+
+
+                                Dim ar() As String = {True, "", "", 0, "", "", 0, ""}
+                                For i = 0 To 7
+                                    ar(i) = r.Cells(i).Value
+                                Next
+
+                                ExcelDataSet.LabelDataTable.Rows.Add(ar)
+                                'ExcelDataSet.LabelDataTable.Rows.Add(New Object() {r.Cells(0).Value, r.Cells(1).Value, r.Cells(2).Value, r.Cells(3).Value, r.Cells(4).Value,
+                                '                                                   r.Cells(5).Value, r.Cells(6).Value}, r.Cells(7).Value)
 
                             End If
                         Next
@@ -2568,7 +2582,7 @@ Public Class MassarelliLabelPrinter
                     arr(4) = IIf(IsDBNull(oRow.Cells(3).Value), "", oRow.Cells(3).Value)
                     arr(5) = IIf(IsDBNull(oRow.Cells(4).Value), "", oRow.Cells(4).Value)
                     arr(6) = 0
-                    arr(7) = IIf(IsDBNull(oRow.Cells(4).Value), "", oRow.Cells(4).Value)
+                    arr(7) = IIf(IsDBNull(oRow.Cells(5).Value), "", oRow.Cells(5).Value)
 
 
                     Try
@@ -2714,6 +2728,32 @@ Public Class MassarelliLabelPrinter
             oLabelData.Columns.Add("MfgFinish", GetType(String))
             oLabelData.Columns.Add("QtyOrd", GetType(Decimal))
         ElseIf ExcelDataSet.ImportType = "UPC" Then
+            oLabelData.Columns.Add("x", GetType(Boolean))
+            oLabelData.Columns.Add("SKU", GetType(String))
+            oLabelData.Columns.Add("Description", GetType(String))
+            oLabelData.Columns.Add("Retail", GetType(Decimal))
+            oLabelData.Columns.Add("MfgPart", GetType(String))
+            oLabelData.Columns.Add("MfgFinish", GetType(String))
+            oLabelData.Columns.Add("QtyOrd", GetType(Decimal))
+            oLabelData.Columns.Add("UPC", GetType(String))
+        End If
+
+        Return oLabelData
+
+    End Function
+    Private Function CreateItemLabelsToPrintDataTable(ImportType) As DataTable
+        'Create datatable
+        Dim oLabelData As New DataTable("LabelData")
+
+        If ImportType = "SKU" Then
+            oLabelData.Columns.Add("x", GetType(Boolean))
+            oLabelData.Columns.Add("SKU", GetType(String))
+            oLabelData.Columns.Add("Description", GetType(String))
+            oLabelData.Columns.Add("Retail", GetType(Decimal))
+            oLabelData.Columns.Add("MfgPart", GetType(String))
+            oLabelData.Columns.Add("MfgFinish", GetType(String))
+            oLabelData.Columns.Add("QtyOrd", GetType(Decimal))
+        ElseIf ImportType = "UPC" Then
             oLabelData.Columns.Add("x", GetType(Boolean))
             oLabelData.Columns.Add("SKU", GetType(String))
             oLabelData.Columns.Add("Description", GetType(String))
