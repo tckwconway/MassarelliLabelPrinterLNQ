@@ -176,24 +176,11 @@ Public Class MassarelliLabelPrinter
 
                 For Each rw In dt.Rows
 
-                    qty = rw("QtyOrd")
+                    qty = rw("QtyOrd") - 1
 
                     For j = 0 To qty
 
-                        'arrItems(i, 0) = "12345"
-                        'arrItems(i, 1) = "LIL DRAGON - CELEBRATE"
-                        'arrItems(i, 2) = "39.99"
-                        'arrItems(i, 3) = "5117"
-                        'arrItems(i, 4) = "DSBLU"
-                        'arrItems(i, 5) = "1.0000"
-                        'arrItems(i, 6) = "723239511726"
-
-
-
-
-
-
-                        arrItems(i, 0) = "12345" 'rw("SKU").ToString.Trim
+                        arrItems(i, 0) = rw("SKU").ToString.Trim
                         arrItems(i, 1) = rw("Description").ToString.Trim
                         arrItems(i, 2) = rw("Retail").ToString.Trim
                         arrItems(i, 3) = rw("MfgPart").ToString.Trim
@@ -2579,7 +2566,7 @@ Public Class MassarelliLabelPrinter
                     arr(2) = oRow.Cells(1).Value
                     arr(3) = oRow.Cells(2).Value
                     arr(4) = oRow.Cells(3).Value
-                    arr(5) = oRow.Cells(4).Value
+                    arr(5) = IIf(IsDBNull(oRow.Cells(4).Value), "", oRow.Cells(4).Value)
                     arr(6) = 0
                     arr(7) = oRow.Cells(5).Value
 

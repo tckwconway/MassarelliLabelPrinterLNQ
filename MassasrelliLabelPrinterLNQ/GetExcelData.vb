@@ -64,6 +64,7 @@ Public Class GetExcelData
 
             Dim oCn _
                 As New System.Data.OleDb.OleDbConnection(strConn)
+
             oCn.Open()
 
 
