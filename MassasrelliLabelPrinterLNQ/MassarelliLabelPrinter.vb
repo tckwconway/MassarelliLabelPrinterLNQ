@@ -2562,15 +2562,15 @@ Public Class MassarelliLabelPrinter
 
                     Dim arr() As String = {False, "", "", "", "", "", 0, ""}
                     arr(0) = False
-                    arr(1) = oRow.Cells(0).Value
-                    arr(2) = oRow.Cells(1).Value
-                    arr(3) = oRow.Cells(2).Value
-                    arr(4) = oRow.Cells(3).Value
+                    arr(1) = IIf(IsDBNull(oRow.Cells(0).Value), "", oRow.Cells(0).Value)
+                    arr(2) = IIf(IsDBNull(oRow.Cells(1).Value), "", oRow.Cells(1).Value)
+                    arr(3) = IIf(IsDBNull(oRow.Cells(2).Value), "", oRow.Cells(2).Value)
+                    arr(4) = IIf(IsDBNull(oRow.Cells(3).Value), "", oRow.Cells(3).Value)
                     arr(5) = IIf(IsDBNull(oRow.Cells(4).Value), "", oRow.Cells(4).Value)
                     arr(6) = 0
-                    arr(7) = oRow.Cells(5).Value
+                    arr(7) = IIf(IsDBNull(oRow.Cells(4).Value), "", oRow.Cells(4).Value)
 
-                 
+
                     Try
                         For Each r As DataRow In ItemLabelsDataTable.Rows
                             If r.Item("MfgPart").ToString = arr(4) Then
