@@ -847,9 +847,9 @@ Public Class MassarelliLabelPrinter
                     oLabelData.Columns.Add("UPC", GetType(String))
                     oLabelData.Columns.Add("QtyOrd", GetType(Decimal))
 
-                    Dim orderItems = From p In dtxlCOLOR, o In dtoeCOLOR _
-                                           Where (p.Field(Of String)("MfgItemNo").Trim = o.Field(Of String)("item_no").Trim) _
-                                           Select p!SKU, p!Description, p!Retail, p!MfgItemNo, o!pick_seq, p!UPC, o!qty_ordered ').ToList
+                    Dim orderItems = From p In dtxlCOLOR, o In dtoeCOLOR
+                                     Where (p.Field(Of String)("MfgItemNo").Trim = o.Field(Of String)("item_no").Trim)
+                                     Select p!SKU, p!Description, p!Retail, p!MfgItemNo, o!pick_seq, p!UPC, o!qty_ordered ').ToList
 
                     'Dim orderItems = From p In xlprices, o In oeorder _
                     '                       Where p!MfgItemNo.ToString.Trim = o!item_no.ToString.Trim And _
@@ -867,9 +867,9 @@ Public Class MassarelliLabelPrinter
                     Next
 
                     'Add items that are DS, detail stain (pick_seq.contains("DS")
-                    Dim orderItemsDS = From p In dtxlDS, o In dtoeDS _
-                                           Where (p.Field(Of String)("MfgItemNo").Trim = o.Field(Of String)("item_no").Trim) _
-                                           Select p!SKU, p!Description, p!Retail, p!MfgItemNo, o!pick_seq, p!UPC, o!qty_ordered ').ToList
+                    Dim orderItemsDS = From p In dtxlDS, o In dtoeDS
+                                       Where (p.Field(Of String)("MfgItemNo").Trim = o.Field(Of String)("item_no").Trim)
+                                       Select p!SKU, p!Description, p!Retail, p!MfgItemNo, o!pick_seq, p!UPC, o!qty_ordered ').ToList
                     'orderItems = From p In xlprices, o In oeorder _
                     '                                           Where (p!MfgItemNo.ToString.Trim = o!item_no.ToString.Trim And o!pick_seq.Contains("DS"))
                     '                                           Select p!SKU, p!Description, p!Retail, p!MfgItemNo, o!pick_seq, p!UPC, o!qty_ordered ').ToList
@@ -905,6 +905,8 @@ Public Class MassarelliLabelPrinter
 
                     ExcelDataSet.LabelDataTable = labeldata
                 Catch ex As Exception
+
+                    MsgBox(ex.Message)
 
                 Finally
 
