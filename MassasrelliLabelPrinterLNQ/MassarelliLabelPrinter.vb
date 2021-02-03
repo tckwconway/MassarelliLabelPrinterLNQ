@@ -1206,6 +1206,7 @@ Public Class MassarelliLabelPrinter
         'pnlDragOffToRemove.Visible = False
         dgvExcelPriceList.Visible = True
         picPreview.Visible = False
+        Me.lblNumPreviews.Text = "Page 0 of 0"
         With dgvSpecialOrder
             .Rows.Clear()
             .Columns.Clear()
@@ -2492,7 +2493,14 @@ Public Class MassarelliLabelPrinter
         Catch ex As Exception
 
         End Try
-        
+        With dgvOrderItemsSelected
+            If PrintColumnVisible = True Then
+                Return
+            Else
+                PrintColumnVisible = False
+                .Columns("x").Visible = PrintColumnVisible
+            End If
+        End With
     End Sub
 
     Private Sub dgvOrderItemsSelected_DragEnter(sender As Object, e As DragEventArgs) Handles dgvOrderItemsSelected.DragEnter
@@ -3075,7 +3083,7 @@ Public Class MassarelliLabelPrinter
         RemoveRow()
     End Sub
 
-    Private Sub txtOrderNo_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtOrderNo.TextChanged
+    Private Sub txtBillToName_TextChanged(sender As Object, e As EventArgs) Handles txtBillToName.TextChanged
 
     End Sub
 End Class

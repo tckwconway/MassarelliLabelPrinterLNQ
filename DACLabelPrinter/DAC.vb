@@ -1,5 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Public Class DAC
+    Public Sub New()
+
+    End Sub
 
     Public Shared Function ExecuteSP_RetVal(ByVal storedprocedure As String, _
     ByVal cn As SqlConnection, ByVal ParamArray arrParam() As SqlParameter) As Integer

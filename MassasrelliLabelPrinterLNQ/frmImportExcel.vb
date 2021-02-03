@@ -300,6 +300,7 @@ Public Class frmImportExcel
         Me.chklstExcelSheetNames.Items.Clear()
 
         Try
+
             xlapp.Quit()
             While (ReleaseComObject(xlapp) <> 0)
             End While
