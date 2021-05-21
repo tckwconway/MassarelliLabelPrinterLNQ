@@ -50,23 +50,24 @@ Public Class GetExcelData
             ExcelVersion = "xls"
         End If
         'FileName = FileName & "$"
+        ' MsgBox("START: Open xls connection")
         Try
             Dim strConn As String
             If ExcelVersion = "xls" Then
                 strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & FileName & ";Extended Properties=""Excel 8.0;IMEX=1;"""
                 SQL = "SELECT * FROM [" & SheetName & "$" & RangeName & "]"
             Else
-                strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Tim\Desktop\Meadows Master Price List 2016.xlsx;Extended Properties=""Excel 12.0;HDR=YES;"""
+                strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & FileName & ";Extended Properties=""Excel 12.0;HDR=YES;"""
                 SQL = "SELECT * FROM [" & SheetName & "$]"
                 'strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & FileName & ";Extended Properties=""Excel 12.0;HDR=YES;"""
             End If
-
 
             Dim oCn _
                 As New System.Data.OleDb.OleDbConnection(strConn)
 
             oCn.Open()
 
+            'MsgBox("END: Open xls connection")
 
             ' Create oects ready to grab data
 
@@ -74,6 +75,8 @@ Public Class GetExcelData
                SQL, oCn)
             Dim oDA As New System.Data.OleDb.OleDbDataAdapter()
             oDA.SelectCommand = oCmd
+
+            ' MsgBox("START: Fill Dataset")
 
             ' Fill DataSet
             Dim oDS As New DataSet()
@@ -87,7 +90,7 @@ Public Class GetExcelData
             dt.Columns.Add("UPC", GetType(String))
             oDA.Fill(oDS, "MasterPriceList")
 
-           
+            'MsgBox("END: Fill Dataset")
 
 
             Return oDS

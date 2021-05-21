@@ -1130,8 +1130,11 @@ Public Class MassarelliLabelPrinter
         Try
             ClearPriceSheetValues()
             frmImportExcel.ShowDialog()
+
             Me.bsrcExcelPriceList.DataSource = ExcelDataSet.XLDataset.Tables(0)
+            ' MsgBox("START: CreateXLListDataGridView")
             CreateXLListDataGridView(Me.dgvExcelPriceList)
+
             With Me.dgvExcelPriceList
                 .DataSource = Me.bsrcExcelPriceList
                 .AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells)
@@ -1146,6 +1149,7 @@ Public Class MassarelliLabelPrinter
         Catch ex As Exception
 
         End Try
+        'MsgBox("END: CreateXLListDataGridView")
 
     End Sub
 
@@ -2531,15 +2535,16 @@ Public Class MassarelliLabelPrinter
 
                     Dim arr() As String = {False, "", "", "", "", "", 0, ""}
                     arr(0) = False
-                    arr(1) = oRow.Cells(0).Value
-                    arr(2) = oRow.Cells(1).Value
-                    arr(3) = oRow.Cells(2).Value
-                    arr(4) = oRow.Cells(3).Value
-                    arr(5) = oRow.Cells(4).Value
+                    If IsDBNull(oRow.Cells(0).Value) Then arr(1) = "" Else arr(1) = oRow.Cells(0).Value
+                    If IsDBNull(oRow.Cells(1).Value) Then arr(2) = "" Else arr(2) = oRow.Cells(1).Value
+                    If IsDBNull(oRow.Cells(2).Value) Then arr(3) = "" Else arr(3) = oRow.Cells(2).Value
+                    If IsDBNull(oRow.Cells(3).Value) Then arr(4) = "" Else arr(4) = oRow.Cells(3).Value
+                    If IsDBNull(oRow.Cells(4).Value) Then arr(5) = "" Else arr(5) = oRow.Cells(4).Value
                     arr(6) = 0
-                    arr(7) = oRow.Cells(5).Value
+                    If IsDBNull(oRow.Cells(5).Value) Then arr(7) = "" Else arr(7) = oRow.Cells(5).Value
 
-                 
+
+
                     Try
                         For Each r As DataRow In ItemLabelsDataTable.Rows
                             If r.Item("MfgPart").ToString = arr(4) Then

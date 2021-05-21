@@ -231,9 +231,10 @@ Public Class frmImportExcel
         'Dim i As Integer = 0
 
         getxl.IsImporting = True
-        
+
+        'MsgBox("Start getxl.GetDataFromExcel")
         getxl.DSExcel = getxl.GetDataFromExcel(Me.txtFilePath.Text, strSheetName, strRange)
-       
+        'MsgBox("End getxl.GetDataFromExcel")
     End Sub
 
     Public Function GetXLRange(ByVal ws As Excel.Worksheet) As String
@@ -262,7 +263,9 @@ Public Class frmImportExcel
         xlobj.ExecelRangeStart = txt.Text
     End Sub
     Private Sub ReleaseExcelSpreadsheet()
+        'MsgBox("START: Release Excel Spreadsheet")
         Try
+
             xlwsheet = Nothing
             xlwbook.Close(False)
             While (ReleaseComObject(xlwbook)) <> 0
@@ -274,8 +277,12 @@ Public Class frmImportExcel
         Catch ex As Exception
 
         End Try
+        'MsgBox("END: Release Excel Spreadsheet")
     End Sub
+
     Private Sub ReleaseXLApplication()
+
+        'MsgBox("START: Release Excel Application")
         Try
             xlapp.Quit()
             While (ReleaseComObject(xlapp) <> 0)
@@ -288,11 +295,9 @@ Public Class frmImportExcel
             GC.WaitForPendingFinalizers()
             GC.Collect()
         End Try
+        'MsgBox("END: Release Excel Application")
     End Sub
 
-    Private Sub frmImportExcel_ForeColorChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.ForeColorChanged
-
-    End Sub
 
     Private Sub frmImportExcel_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         Me.txtFilePath.Clear()
